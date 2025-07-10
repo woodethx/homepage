@@ -177,5 +177,8 @@ footer{
         margin: 0;
         margin-top: 5vw;
     }
+    #content{
+        width: 100vw;;
+    }
     
 }
