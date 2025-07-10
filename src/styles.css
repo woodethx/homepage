@@ -4,11 +4,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rotateScale {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.5) rotate(1turn);
+        
+    }
+}
 html,
 body{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(199, 208, 216);
+    background-color: lightgray;
 }
 h1{
     font-size: 2rem;
@@ -27,8 +44,9 @@ nav{
     padding: 0 5vw;
     z-index: 10;
     position: sticky;
+    top: 0;
 }
-nav > ul{
+.links2{
     display: flex;
     gap: 1.5vw;
 }
@@ -37,7 +55,7 @@ nav > ul{
 }
 #slant{
     height: 75vh;
-    background-color: rgb(1, 1, 129);
+    background-color: rgb(1, 1, 95);
     transform: skew(0deg, -10deg) translateY(-175px);
 }
 #content{
@@ -54,33 +72,77 @@ nav > ul{
     padding: 3vh;
     background-color: white;
     margin-left: 0;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 #aboutMe > h2{
     margin-bottom: 2vh;
 }
-#aboutMe > img{
-    flex-shrink: 3;
+h2{
+    font-size: 2rem;
+}
+.meImg{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    max-width: 40vw;
 }
 #projCon{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1vw;
+    gap: 2vw;
     margin-top: 1vw;
+}
+.projTxt{
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    gap: .75vw;
+}
+.projTxt > p {
+    font-size: 1.25rem;
+}
+.projTitle{
+    font-size: 1.5rem;
 }
 .project{
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    padding: 1vw;
+    animation: fadeInUp ease-out both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+    max-width: 40vw;
+    transition: transform .5s;
 }
 main{
     margin: 10vh 10vw;
 }
 .screenshot{
-    max-width: 30vw;
+    max-width: 40vw;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .icon{
-    max-width: 25px;
+    max-width: 50px;
+}
+.project:hover{
+    transform: scale(1.05);
+}
+.links > a{
+    margin-right: 1vw;
+}
+a > img:hover{
+    animation: rotateScale .5s forwards;
+}
+footer{
+    background-color: white;
+    margin-top: 10vw;
+    min-height: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
 }
 
 @media (max-width: 1500px){
@@ -90,9 +152,30 @@ main{
     main{
         margin-top: 30vw;
     }
+    #aboutMe{
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .meImg{
+        margin-top: 15vh;
+    }
 }
 @media (max-width: 800px){
     #projCon{
         grid-template-columns: 1fr
     }
+    .project{
+        max-width: 80vw;
+    }
+    .screenshot{
+        max-width: 80vw;
+    }
+    .meImg{
+        margin-top: 20vh;
+    }
+    #aboutMe{
+        margin: 0;
+        margin-top: 5vw;
+    }
+    
 }
